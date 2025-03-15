@@ -1,0 +1,150 @@
+:root {
+    --primary-light: oklch(61.22% 0.2313 22.5);
+    --primary-dark: oklch(55.91% 0.2248 23.97);
+    --secondary-light: oklch(68% 0.034 261);
+    --secondary-dark: oklch(30.5% 0.037 280);
+    --secondary-darker: oklch(20% 0.037 280);
+    --bg: oklch(95.7% 0.006 223);
+    --fonts-logo: 'Rubik', sans-serif;
+    --fonts-text: 'Nunito Sans', sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: var(--fonts-text);
+    margin: 0;
+}
+
+header {
+    background-color: var(--primary-dark);
+    color: var(--bg);
+    padding: 0.5% 10%;
+    display: flex;
+}
+
+header a, header a:visited {
+    text-decoration: none;
+    color: var(--bg);
+}
+
+.logo-frame {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    font-family: var(--fonts-logo);
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.logo {
+    height: 48px;
+    margin-right: 5px;
+}
+
+.header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.white-rounded-btn {
+    padding: 0 25px;
+    height: 45px;
+    border-radius: 100px;
+    font-family: var(--fonts-text);
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    background-color: var(--bg);
+    color: var(--secondary-dark);
+}
+
+.white-rounded-btn:hover{
+    cursor: pointer;
+    color: var(--primary-dark);
+}
+
+.sign-in-link {
+    margin-left: 20px;
+    font-family: var(--fonts-text);
+}
+
+.column-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column-edge {
+    width: 10%;
+}
+
+.column-center {
+    width: 80%;
+}
+
+.flex-bottom-left {
+    margin-top: auto;
+    margin-right: auto;
+}
+
+.flex-left {
+    margin-right: auto;
+}
+
+.tariffs-showcase {
+    width: 70%;
+    height: 500px;
+    text-align: center;
+    margin: 30px auto;
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--secondary-dark);
+    display: flex;
+    flex-direction: column;
+}
+
+.tariffs-name {
+    height: 13%;
+    font-size: 40px;
+    padding-bottom: 10px;
+}
+
+.tariff-personal {
+    display: flex;
+    flex-direction: column;
+    height: 52%;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: var(--primary-light);
+    box-shadow: 0 0 7px var(--primary-light);
+    color: var(--bg);
+}
+
+.tariffs-premade {
+    display: flex;
+    height: 35%;
+    font-size: 30px;
+}
+
+.tariff-premade-1 {
+    width: 60%;
+    margin-right: 10px;
+    border: 2px groove var(--primary-light);
+    border-radius: 20px;
+    box-shadow: 0 0 7px var(--primary-light);
+    padding: 20px;
+}
+
+.tariff-premade-2 {
+    width: 40%;
+    border: 2px solid var(--primary-light);
+    border-radius: 20px;
+    box-shadow: 0 0 7px var(--primary-light);
+    padding: 20px;
+}
+
+footer {
+    margin: 50px 0;
+    color: var(--secondary-dark);
+}
