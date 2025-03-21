@@ -5,6 +5,7 @@
     --secondary-dark: oklch(30.5% 0.037 280);
     --secondary-darker: oklch(20% 0.037 280);
     --bg: oklch(95.7% 0.006 223);
+    --bg-dark: oklch(90% 0.006 223);
     --fonts-logo: 'Rubik', sans-serif;
     --fonts-text: 'Nunito Sans', sans-serif;
 }
@@ -47,21 +48,40 @@ header a, header a:visited {
     align-items: center;
 }
 
-.white-rounded-btn {
+.rounded-btn {
     padding: 0 25px;
     height: 45px;
-    border-radius: 100px;
+    border-radius: 20em;
     font-family: var(--fonts-text);
     font-weight: 700;
     font-size: 14px;
     border: none;
+}
+
+.white-btn {
     background-color: var(--bg);
     color: var(--secondary-dark);
 }
 
-.white-rounded-btn:hover{
+.white-btn:hover {
     cursor: pointer;
     color: var(--primary-dark);
+}
+
+.red-btn {
+    background-color: var(--primary-light);
+    color: var(--bg);
+}
+
+.red-btn:hover {
+    cursor: pointer;
+    color: var(--bg-dark);
+}
+
+.big-btn {
+    padding: 0 35px;
+    height: 50px;
+    font-size: 18px;
 }
 
 .sign-in-link {
@@ -82,19 +102,27 @@ header a, header a:visited {
     width: 80%;
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .flex-bottom-left {
     margin-top: auto;
     margin-right: auto;
 }
 
-.flex-left {
-    margin-right: auto;
+.flex-right {
+    margin-left: auto;
 }
 
 .tariffs-showcase {
     width: 70%;
-    height: 500px;
-    text-align: center;
     margin: 30px auto;
     font-weight: 700;
     font-size: 36px;
@@ -103,45 +131,70 @@ header a, header a:visited {
     flex-direction: column;
 }
 
-.tariffs-name {
+.tariffs-heading {
     height: 13%;
-    font-size: 40px;
+    text-align: center;
+    font-size: 42px;
     padding-bottom: 10px;
 }
 
-.tariff-personal {
-    display: flex;
-    flex-direction: column;
-    height: 52%;
-    margin-bottom: 10px;
+.tariff-card {
     border-radius: 20px;
     padding: 20px;
-    background-color: var(--primary-light);
     box-shadow: 0 0 7px var(--primary-light);
+}
+
+.tariff-card:hover {
+    transform: scale(1.01, 1.01);
+    transition-duration: 100ms;
+}
+
+.tariff-price {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.tariff-personal {
+    height: 260px;
+    margin-bottom: 10px;
+    background-color: var(--primary-light);
     color: var(--bg);
+    font-size: 40px;
+}
+
+#tariff-personal-price {
+    font-size: 32px;
+}
+
+.tariff-personal-phone-container {
+    transform: translateX(-25px);
+    overflow: visible;
+}
+
+.tariff-personal-phone {
+    clip-path: rect(0 100% 281px 0);
 }
 
 .tariffs-premade {
     display: flex;
-    height: 35%;
+    height: 200px;
     font-size: 30px;
 }
 
-.tariff-premade-1 {
+.tariff-premade-info {
+    align-self: center;
+    
+}
+
+.tariff-max {
     width: 60%;
     margin-right: 10px;
     border: 2px groove var(--primary-light);
-    border-radius: 20px;
-    box-shadow: 0 0 7px var(--primary-light);
-    padding: 20px;
 }
 
 .tariff-premade-2 {
     width: 40%;
     border: 2px solid var(--primary-light);
-    border-radius: 20px;
-    box-shadow: 0 0 7px var(--primary-light);
-    padding: 20px;
 }
 
 footer {

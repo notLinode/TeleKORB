@@ -5,20 +5,20 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
         
-        <link href="style.css" type="text/css" rel="stylesheet">
+        <link href="static/styles/style.css" type="text/css" rel="stylesheet">
 
         <title>TeleKORB</title>
     </head>
     <body>
         <header>
             <a href="index.html" class="logo-frame">
-                    <img src="../static/logo.png" class="logo">
+                    <img src="static/images/logo.png" class="logo">
                     TeleKORB
             </a>
 
             <div class="header-right">
                 <a href="PLACEHOLDER">
-                    <button class="white-rounded-btn">
+                    <button class="rounded-btn white-btn">
                         Заказать сим-карту
                     </button>
                 </a>
@@ -34,22 +34,41 @@
 
             <div class="column-center">
                 <div class="tariffs-showcase">
-                    <div class="tariffs-name">Тарифы на мобильную связь</div>
+                    <div class="tariffs-heading">Тарифы на мобильную связь</div>
 
-                    <div class="tariff-personal">
-                        <span class="flex-left">Создай свой тариф</span>
-                        <a href="PLACEHOLDER" class="flex-bottom-left">
-                            <button class="white-rounded-btn">Попробовать</button>
-                        </a>
+                    <div class="flex-row tariff-card tariff-personal">
+                        <div class="flex-column">
+                            Собственный тариф
+                            <div class="flex-bottom-left">
+                                <div class="tariff-price" id="tariff-personal-price">От <b>209 ₽</b> за 30 дней</div>
+                                <a href="PLACEHOLDER">
+                                    <button class="rounded-btn white-btn big-btn">Создать</button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex-right tariff-personal-phone-container">
+                            <img src="static/images/phone.png" class="tariff-personal-phone">
+                        </div>
                     </div>
 
                     <div class="tariffs-premade">
-                        <div class="tariff-premade-1">
-                            №1
+                        <div class="flex-row tariff-card tariff-max">
+                            <div class="flex-column">
+                                Бульборб Про
+                                <div class="flex-bottom-left">
+                                    <div class="tariff-price" id="tariff-max-price"><b>777 ₽</b> за 30 дней</div>
+                                    <a href="PLACEHOLDER">
+                                        <button class="rounded-btn red-btn">Подробнее</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex-right tariff-premade-info">
+                                Безлимиты
+                            </div>
                         </div>
 
-                        <div class="tariff-premade-2">
-                            №2
+                        <div class="flex-column tariff-card tariff-premade-2">
+                            Тарифмин
                         </div>
                     </div>
                 </div>
