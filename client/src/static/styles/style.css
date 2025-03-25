@@ -1,7 +1,8 @@
 :root {
     --primary-light: oklch(61.22% 0.2313 22.5);
     --primary-dark: oklch(55.91% 0.2248 23.97);
-    --secondary-light: oklch(68% 0.034 261);
+    --secondary-lighter: oklch(85% 0.034 261);
+    --secondary-light: oklch(45% 0.034 261);
     --secondary-dark: oklch(30.5% 0.037 280);
     --secondary-darker: oklch(20% 0.037 280);
     --bg: oklch(95.7% 0.006 223);
@@ -17,7 +18,10 @@ body {
 }
 
 header {
-    background-color: var(--primary-dark);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-light) 20%);
     color: var(--bg);
     padding: 0.5% 10%;
     display: flex;
@@ -87,6 +91,13 @@ header a, header a:visited {
 .sign-in-link {
     margin-left: 20px;
     font-family: var(--fonts-text);
+    display: flex;
+    align-items: center;
+}
+
+.sign-in-link img {
+    height: 1.25em;
+    margin-right: 3px;
 }
 
 .column-container {
@@ -112,9 +123,12 @@ header a, header a:visited {
     flex-direction: column;
 }
 
-.flex-bottom-left {
-    margin-top: auto;
+.flex-left {
     margin-right: auto;
+}
+
+.flex-bottom {
+    margin-top: auto;
 }
 
 .flex-right {
@@ -155,11 +169,12 @@ header a, header a:visited {
 }
 
 .tariff-personal {
+    padding: 20px 30px;
     height: 260px;
     margin-bottom: 10px;
     background-color: var(--primary-light);
     color: var(--bg);
-    font-size: 40px;
+    font-size: 44px;
 }
 
 #tariff-personal-price {
@@ -183,7 +198,24 @@ header a, header a:visited {
 
 .tariff-premade-info {
     align-self: center;
-    
+    font-size: 26px;
+}
+
+.tariff-unlimited-text {
+    font-weight: 400;
+    font-size: 20px;
+    height: 30px;
+    color: var(--secondary-light);
+}
+
+.tariff-unlimited-logos-container {
+    font-size: 0;
+}
+
+.tariff-unlimited-logo {
+    height: 30px;
+    width: 30px;
+    clip-path: circle(15px);
 }
 
 .tariff-max {
@@ -193,11 +225,11 @@ header a, header a:visited {
 }
 
 .tariff-premade-2 {
-    width: 40%;
+    width: 45%;
     border: 2px solid var(--primary-light);
 }
 
 footer {
-    margin: 50px 0;
-    color: var(--secondary-dark);
+    margin: 50px 0 0 0;
+    color: var(--secondary-light);
 }

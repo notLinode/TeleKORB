@@ -24,6 +24,7 @@
                 </a>
 
                 <a href="PLACEHOLDER" class="sign-in-link">
+                    <img src="static/images/sign-in.svg">
                     Войти
                 </a>
             </div>
@@ -39,8 +40,8 @@
                     <div class="flex-row tariff-card tariff-personal">
                         <div class="flex-column">
                             Собственный тариф
-                            <div class="flex-bottom-left">
-                                <div class="tariff-price" id="tariff-personal-price">От <b>209 ₽</b> за 30 дней</div>
+                            <div class="flex-bottom flex-left">
+                                <div class="tariff-price" id="tariff-personal-price"><small>От</small> <b>209 ₽</b> <small>за 30 дней</small></div>
                                 <a href="PLACEHOLDER">
                                     <button class="rounded-btn white-btn big-btn">Создать</button>
                                 </a>
@@ -55,26 +56,53 @@
                         <div class="flex-row tariff-card tariff-max">
                             <div class="flex-column">
                                 Бульборб Про
-                                <div class="flex-bottom-left">
-                                    <div class="tariff-price" id="tariff-max-price"><b>777 ₽</b> за 30 дней</div>
+                                <div class="flex-bottom flex-left">
+                                    <div class="tariff-price" id="tariff-max-price"><b>777 ₽</b> <small>за 30 дней</small></div>
                                     <a href="PLACEHOLDER">
                                         <button class="rounded-btn red-btn">Подробнее</button>
                                     </a>
                                 </div>
                             </div>
                             <div class="flex-right tariff-premade-info">
-                                Безлимиты
+                                <div>45 <small>ГБ</small> 800 <small>МИН</small></div>
+                                <div class="tariff-unlimited-text">Безлимиты на</div>
+                                <div class="tariff-unlimited-logos-container">
+                                    <img src="static/images/vk-logo.svg" alt="VK" class="tariff-unlimited-logo">
+                                    <img src="static/images/yt-logo.svg" alt="YouTube" class="tariff-unlimited-logo">
+                                    <img src="static/images/tg-logo.svg" alt="Telegram" class="tariff-unlimited-logo">
+                                    <img src="static/images/proverka-logo.png" alt="Proverka" class="tariff-unlimited-logo">
+                                    <img src="static/images/tiktok-logo.svg" alt="TikTok" class="tariff-unlimited-logo">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="flex-column tariff-card tariff-premade-2">
-                            Тарифмин
+                        <div class="flex-row tariff-card tariff-premade-2">
+                            <div class="flex-column">
+                                Тарифмин
+                                <div class="flex-bottom flex-left">
+                                    <div class="tariff-price" id="tariff-lite-price"><b>249 ₽</b> <small>за 30 дней</small></div>
+                                    <a href="PLACEHOLDER">
+                                        <button class="rounded-btn red-btn">Подробнее</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex-right tariff-premade-info">
+                                <div id="tariff-lite-info">12 <small>ГБ</small> 200 <small>МИН</small></div>
+                                <div class="tariff-unlimited-text">Безлимиты на</div>
+                                <div class="tariff-unlimited-logos-container">
+                                    <img src="static/images/vk-logo.svg" alt="VK" class="tariff-unlimited-logo">
+                                    <img src="static/images/tg-logo.svg" alt="Telegram" class="tariff-unlimited-logo">
+                                    <img src="static/images/whatsapp-logo.svg" alt="Whatsapp" class="tariff-unlimited-logo">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <footer>
-                    25+ © 2025 ООО «KORB7»
+                <footer class="flex-row">
+                    <div class="flex-right">
+                        <b>25+</b> © 2025 ООО «KORB7»
+                    </div>
                 </footer>
             </div>
             
