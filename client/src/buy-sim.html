@@ -18,7 +18,7 @@
             </a>
 
             <div class="header-right">
-                <a href="PLACEHOLDER" class="sign-in-link">
+                <a href="login.html" class="sign-in-link">
                     <img src="static/images/sign-in.svg">
                     Войти
                 </a>
@@ -31,15 +31,34 @@
             <div class="column-center">
                 <form>
                     <div class="order-container">
-                        <div class="order-heading">Заказ сим-карты</div>
+                        <div class="page-heading">Заказ сим-карты</div>
                         <div class="flex-row">
                             <div class="flex-column order-info">
                                 <div class="border-light">
                                     <h2>Данные заказчика</h2>
-                                    <input type="text" id="name" name="name" placeholder="ФИО">
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        placeholder="ФИО"
+                                        pattern="[А-яЁё \-]+"
+                                        class="text-input"
+                                    >
                                     <div class="flex-row" style="gap: 10px;">
-                                        <input type="text" id="city" name="city" placeholder="Город" class="flex-right">
-                                        <input type="text" id="mail" name="mail" placeholder="Почта" value="">
+                                        <input
+                                            type="text"
+                                            id="city"
+                                            name="city"
+                                            placeholder="Город"
+                                            class="text-input flex-right"
+                                        >
+                                        <input
+                                            type="email"
+                                            id="mail"
+                                            name="mail"
+                                            placeholder="Почта"
+                                            class="text-input"
+                                        >
                                     </div>
                                 </div>
 
@@ -74,7 +93,7 @@
                                     </div>
                                 </div>
                                 
-                                <button type="submit" class="rounded-btn red-btn" style="margin: 7px 10px;">
+                                <button type="submit" class="rounded-btn red-btn border-light-margins">
                                     Оформить заказ
                                 </button>
                             </div>
