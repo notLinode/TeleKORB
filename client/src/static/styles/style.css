@@ -52,6 +52,29 @@ header a, header a:visited {
     align-items: center;
 }
 
+.page-heading {
+    color: var(--secondary-dark);
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.border-light {
+    border: 1px solid var(--bg-dark);
+    border-radius: 20px;
+    box-shadow: 0 0 5px var(--bg-dark);
+    padding: 20px;
+    margin: 7px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.border-light-margins {
+    margin: 7px 10px;
+}
+
 .rounded-btn {
     padding: 0 25px;
     height: 45px;
@@ -86,6 +109,41 @@ header a, header a:visited {
     padding: 0 35px;
     height: 50px;
     font-size: 18px;
+}
+
+.text-label {
+    color: var(--secondary-dark);
+    font-weight: 700;
+}
+
+.text-input {
+    background-color: var(--bg);
+    border: 1px solid var(--bg-dark);
+    border-radius: 20px;
+    box-shadow: 0 0 3px var(--bg-dark) inset;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: var(--fonts-text);
+    font-weight: 400;
+    color: var(--secondary-dark);
+    caret-color: var(--primary-light);
+    cursor: text;
+}
+
+.text-input:hover {
+    transition: all 150ms;
+}
+
+.text-input:hover, .text-input:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 3px var(--primary-dark) inset;
+    outline: none;
+}
+
+.text-input:invalid {
+    color: var(--primary-dark);
 }
 
 .sign-in-link {
