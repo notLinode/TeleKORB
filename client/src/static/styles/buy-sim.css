@@ -1,0 +1,20 @@
+.order-container {
+    font-size: 18px;
+    margin: 30px 10%;
+    color: var(--secondary-dark);
+    cursor: default;
+}
+
+.order-info {
+    width: 70%;
+}
+
+.order-summary {
+    height: fit-content;
+}
+
+h2 {
+    font-size: inherit;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}

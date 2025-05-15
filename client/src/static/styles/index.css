@@ -1,0 +1,93 @@
+.tariffs-showcase {
+    width: 70%;
+    margin: 30px auto;
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--secondary-dark);
+    display: flex;
+    flex-direction: column;
+}
+
+.tariffs-heading {
+    height: 13%;
+    text-align: center;
+    font-size: 42px;
+    padding-bottom: 10px;
+}
+
+.tariff-card {
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 7px var(--primary-light);
+}
+
+.tariff-card:hover {
+    transform: scale(1.01, 1.01);
+    transition-duration: 100ms;
+}
+
+.tariff-price {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.tariff-personal {
+    padding: 20px 30px;
+    height: 260px;
+    margin-bottom: 10px;
+    background-color: var(--primary-light);
+    color: var(--bg);
+    font-size: 44px;
+}
+
+#tariff-personal-price {
+    font-size: 32px;
+}
+
+.tariff-personal-phone-container {
+    transform: translateX(-25px);
+    overflow: visible;
+}
+
+.tariff-personal-phone {
+    clip-path: rect(0 100% 281px 0);
+}
+
+.tariffs-premade {
+    display: flex;
+    height: 200px;
+    font-size: 30px;
+}
+
+.tariff-premade-info {
+    align-self: center;
+    font-size: 26px;
+}
+
+.tariff-unlimited-text {
+    font-weight: 400;
+    font-size: 20px;
+    height: 30px;
+    color: var(--secondary-light);
+}
+
+.tariff-unlimited-logos-container {
+    font-size: 0;
+}
+
+.tariff-unlimited-logo {
+    height: 30px;
+    width: 30px;
+    clip-path: circle(15px);
+}
+
+.tariff-max {
+    width: 60%;
+    margin-right: 10px;
+    border: 2px groove var(--primary-light);
+}
+
+.tariff-premade-2 {
+    width: 45%;
+    border: 2px solid var(--primary-light);
+}
