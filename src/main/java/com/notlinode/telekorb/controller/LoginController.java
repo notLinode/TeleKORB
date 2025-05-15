@@ -1,0 +1,40 @@
+package com.notlinode.telekorb.controller;
+
+import com.notlinode.telekorb.dto.UserDto;
+import com.notlinode.telekorb.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class LoginController {
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/login")
+    public String showLogin(Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute(userDto);
+
+        return "login";
+    }
+
+    @GetMapping("/buy-sim")
+    public String showRegister(Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute(userDto);
+
+        return "buy-sim";
+    }
+
+    @PostMapping("/buy-sim")
+    public String register(UserDto userDto) {
+        System.out.println(userService.createUser(userDto).toString());
+
+        return "redirect:/login";
+    }
+
+}

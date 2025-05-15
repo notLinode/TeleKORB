@@ -29,7 +29,7 @@
             <div class="column-edge"></div>
 
             <div class="column-center">
-                <form>
+                <form th:action="@{/buy-sim}" th:object="${userDto}" method="post">
                     <div class="order-container">
                         <div class="page-heading">Заказ сим-карты</div>
                         <div class="flex-row">
@@ -65,12 +65,12 @@
                                 <div class="border-light">
                                     <h2>Красивый номер</h2>
                                     <div>
-                                        <input type="radio" name="phone_num" id="phone_num0" value="0" checked>
-                                        <label for="phone_num0">Случайный номер</label>
+                                        <input type="radio" name="phoneNum" id="phoneNum0" value="0" checked>
+                                        <label for="phoneNum0">Случайный номер</label>
                                     </div>
                                     <div>
-                                        <input type="radio" name="phone_num" id="phone_num1" value="79123456789">
-                                        <label for="phone_num1">+7 (912) 345 67-89</label>
+                                        <input type="radio" name="phoneNum" id="phoneNum1" value="79123456789">
+                                        <label for="phoneNum1">+7 (912) 345 67-89</label>
                                     </div>
                                 </div>
 
@@ -78,7 +78,7 @@
                                     <h2>Способ оплаты</h2>
                                     <div>
                                         <input type="radio" name="payment" id="payment1" value="KORB Pay" checked>
-                                        <label for="phone_num0">KORB Pay</label>
+                                        <label for="payment1">KORB Pay</label>
                                     </div>
                                 </div>
                             </div>

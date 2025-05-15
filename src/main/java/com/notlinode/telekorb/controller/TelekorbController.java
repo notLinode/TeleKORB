@@ -11,14 +11,9 @@ public class TelekorbController {
         return "index";
     }
 
-    @RequestMapping("/buy-sim")
-    public String showBuySim() {
-        return "buy-sim";
-    }
-
-    @RequestMapping("/login")
-    public String showLogin() {
-        return "login";
+    @RequestMapping("/test")
+    public String showTest() {
+        return "test";
     }
 
     @RequestMapping("/404")
