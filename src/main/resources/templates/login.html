@@ -6,30 +6,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
         
         <link href="/styles/style.css" type="text/css" rel="stylesheet">
-        <link href="/styles/login.css" type="text/css" rel="stylesheet">
 
-        <title>TeleKORB</title>
+        <title>Войти</title>
     </head>
     <body>
-        <header>
-            <a href="/" class="logo-frame">
-                <img src="/images/logo.png" class="logo">
-                TeleKORB
-            </a>
-
-            <div class="header-right">
-                <a href="/buy-sim">
-                    <button class="rounded-btn white-btn">
-                        Заказать сим-карту
-                    </button>
-                </a>
-
-                <a href="/login" class="sign-in-link">
-                    <img src="/images/sign-in.svg">
-                    Войти
-                </a>
-            </div>
-        </header>
+        <div th:insert="~{header :: header}"></div>
 
         <div class="column-container">
             <div class="column-edge"></div>
@@ -38,7 +19,11 @@
                 <form th:action="@{/login}" th:object="${userDto}" method="post">
                     <div style="margin: 30px 25%;">
                         <div class="page-heading">Вход в личный кабинет</div>
-    
+
+                        <div th:if="${param.phoneNum}" class="border-light" style="text-align: center; font-size: 1.2em; margin-bottom: 20px; display: block;">
+                            📞 Вы успешно заказали сим-карту с номером <span th:text="${param.phoneNum}" style="font-weight: 700;"></span>
+                        </div>
+
                         <div class="border-light">
                             <label for="username" class="text-label" style="font-size: 1.25em;">Номер телефона</label>
                             <div class="flex-row">

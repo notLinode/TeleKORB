@@ -1,6 +1,7 @@
 package com.notlinode.telekorb.controller;
 
 import com.notlinode.telekorb.dto.UserDto;
+import com.notlinode.telekorb.model.UserEntity;
 import com.notlinode.telekorb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,9 +33,9 @@ public class LoginController {
 
     @PostMapping("/buy-sim")
     public String register(UserDto userDto) {
-        System.out.println(userService.createUser(userDto).toString());
+        UserEntity user = userService.createUser(userDto);
 
-        return "redirect:/login";
+        return "redirect:/login?phoneNum=" + user.getUsername();
     }
 
 }

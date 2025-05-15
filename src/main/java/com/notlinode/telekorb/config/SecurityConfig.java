@@ -29,7 +29,7 @@ public class SecurityConfig {
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/test")
+                        .defaultSuccessUrl("/account")
                 )
                 .httpBasic(Customizer.withDefaults())
                 .build();

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TeleKORB Header</title>
+</head>
+<body>
+    <header th:fragment="header">
+        <a href="/" class="logo-frame">
+            <img src="/images/logo.png" class="logo">
+            TeleKORB
+        </a>
+
+        <div sec:authorize="!isAuthenticated()" class="header-right">
+            <a href="/buy-sim">
+                <button class="rounded-btn white-btn">
+                    Заказать сим-карту
+                </button>
+            </a>
+
+            <a href="/login" class="sign-in-link">
+                <img src="/images/sign-in.svg">
+                Войти
+            </a>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="header-right">
+            <a href="/account" class="sign-in-link">
+                <img src="/images/account.svg">
+                Личный кабинет
+            </a>
+        </div>
+    </header>
+</body>
+</html>

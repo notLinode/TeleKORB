@@ -11,11 +11,6 @@ public class TelekorbController {
         return "index";
     }
 
-    @RequestMapping("/test")
-    public String showTest() {
-        return "test";
-    }
-
     @RequestMapping("/404")
     public String showNotFound() {
         return "error";
