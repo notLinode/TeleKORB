@@ -7,6 +7,7 @@ import com.notlinode.telekorb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
@@ -32,8 +33,12 @@ public class UserServiceImpl implements UserService {
         }
 
         UserEntity user = UserEntity.builder()
+                .createdAt(new Date())
                 .username(phoneNum)
                 .password("{noop}")
+                .name(userDto.getName())
+                .city(userDto.getCity())
+                .mail(userDto.getMail())
                 .build();
 
         userRepo.save(user);
@@ -44,6 +49,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserEntity> findUserByUsername(String username) {
         return userRepo.findByUsername(username);
+    }
+
+    @Override
+    public UserDto mapEntityToDto(UserEntity entity) {
+        return UserDto.builder()
+                .createdAt(entity.getCreatedAt())
+                .name(entity.getName())
+                .city(entity.getCity())
+                .mail(entity.getMail())
+                .phoneNum(entity.getUsername())
+                .build();
     }
 
 }

@@ -52,12 +52,19 @@ header a, header a:visited {
     align-items: center;
 }
 
-.page-heading {
+.page-heading, .page-heading2 {
     color: var(--secondary-dark);
-    font-size: 48px;
     font-weight: 700;
     text-align: center;
     margin: 20px 0;
+}
+
+.page-heading {
+    font-size: 48px;
+}
+
+.page-heading2 {
+    font-size: 42px;
 }
 
 .border-light {
@@ -114,6 +121,7 @@ header a, header a:visited {
 .text-label {
     color: var(--secondary-dark);
     font-weight: 700;
+    font-size: 1.25em;
 }
 
 .text-input {

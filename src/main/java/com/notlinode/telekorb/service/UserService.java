@@ -8,6 +8,9 @@ import java.util.Optional;
 public interface UserService {
 
     UserEntity createUser(UserDto userDto);
+
     Optional<UserEntity> findUserByUsername(String username);
+
+    UserDto mapEntityToDto(UserEntity entity);
 
 }

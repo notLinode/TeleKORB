@@ -24,12 +24,15 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/test").authenticated()
+                        .requestMatchers("/test", "/account").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
                         .defaultSuccessUrl("/account")
+                )
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/")
                 )
                 .httpBasic(Customizer.withDefaults())
                 .build();

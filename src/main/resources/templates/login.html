@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="border-light">
-                            <label for="username" class="text-label" style="font-size: 1.25em;">Номер телефона</label>
+                            <label for="username" class="text-label">Номер телефона</label>
                             <div class="flex-row">
                                 <input
                                     type="text"
@@ -44,8 +44,11 @@
                                 </button>
                             </div>
 
-                            <div th:if="${param.error}" class="error">
-                                ❗ Данный номер не является номером TeleKORB
+                            <div th:if="${param.error}" style="margin-top: 0.5rem;">
+                                🚫 Данный номер не является номером TeleKORB
+                            </div>
+                            <div style="margin-top: 0.5rem;">
+                                🧾 Для того, чтобы войти, необходимо <a href="/buy-sim">иметь сим-карту TeleKORB</a>
                             </div>
 
                             <input type="password" id="password" name="password" value="" style="visibility: hidden; position: absolute">

@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,8 +26,14 @@ public class UserEntity implements UserDetails {
     @GeneratedValue
     private Long id;
 
+    private Date createdAt;
+
     private String username;
     private String password;
+
+    private String name;
+    private String city;
+    private String mail;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
