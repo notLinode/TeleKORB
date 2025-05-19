@@ -32,7 +32,7 @@ public class DataLoader implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         var generalCosts = BandwidthCost.builder()
                 .perGigabyte(1.5)
                 .perMinute0To200(1.5)
