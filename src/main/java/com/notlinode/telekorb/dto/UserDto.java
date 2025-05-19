@@ -21,4 +21,6 @@ public class UserDto {
     private String phoneNum;
     private String payment;
 
+    private TariffDto tariff;
+
 }

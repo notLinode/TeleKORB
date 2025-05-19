@@ -154,6 +154,48 @@ header a, header a:visited {
     color: var(--primary-dark);
 }
 
+.slider-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.slider-input {
+    width: 250px;
+    border-radius: 100px;
+    background: var(--bg);
+}
+
+.slider-input::-moz-range-progress {
+    height: 6px;
+    border-radius: 100px;
+    background: var(--primary-light);
+}
+
+.slider-input::-moz-range-track {
+    height: 6px;
+    border-radius: 100px;
+    background: var(--secondary-lighter);
+}
+
+.slider-input::-moz-range-thumb {
+    border: solid 2px var(--bg);
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    background: var(--primary-light);
+}
+
+.slider-input:hover::-moz-range-thumb {
+    background: var(--primary-dark);
+}
+
+.hidden-input {
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
 .sign-in-link {
     margin-left: 20px;
     font-family: var(--fonts-text);

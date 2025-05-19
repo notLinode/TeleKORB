@@ -3,6 +3,7 @@ package com.notlinode.telekorb.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,17 +24,17 @@ import java.util.List;
 public class UserEntity implements UserDetails {
 
     @Id
-    @GeneratedValue
-    private Long id;
-
-    private Date createdAt;
-
     private String username;
     private String password;
+
+    private Date createdAt;
 
     private String name;
     private String city;
     private String mail;
+
+    @ManyToOne
+    private Tariff tariff;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

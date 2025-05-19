@@ -22,10 +22,14 @@
 
                     <div class="flex-row tariff-card tariff-personal">
                         <div class="flex-column">
-                            Собственный тариф
+                            [[${personalTariff.name}]]
                             <div class="flex-bottom flex-left">
-                                <div class="tariff-price" id="tariff-personal-price"><small>От</small> <b>209 ₽</b> <small>за 30 дней</small></div>
-                                <a href="PLACEHOLDER">
+                                <div class="tariff-price" id="tariff-personal-price">
+                                    <small>От </small>
+                                    <b>[[${personalTariff.totalCost}]] ₽</b>
+                                    <small> за 30 дней</small>
+                                </div>
+                                <a href="/account">
                                     <button class="rounded-btn white-btn big-btn">Создать</button>
                                 </a>
                             </div>
@@ -38,44 +42,48 @@
                     <div class="tariffs-premade">
                         <div class="flex-row tariff-card tariff-max">
                             <div class="flex-column">
-                                Бульборб Про
+                                [[${featured1.name}]]
                                 <div class="flex-bottom flex-left">
-                                    <div class="tariff-price" id="tariff-max-price"><b>777 ₽</b> <small>за 30 дней</small></div>
-                                    <a href="PLACEHOLDER">
+                                    <div class="tariff-price" id="tariff-max-price"><b>[[${featured1.totalCost}]] ₽</b> <small>за 30 дней</small></div>
+                                    <a href="/account">
                                         <button class="rounded-btn red-btn">Подробнее</button>
                                     </a>
                                 </div>
                             </div>
                             <div class="flex-right tariff-premade-info">
-                                <div>45 <small>ГБ</small> 800 <small>МИН</small></div>
+                                <div>[[${featured1.internetBandwidth}]] <small>ГБ</small> [[${featured1.phoneBandwidth}]] <small>МИН</small></div>
                                 <div class="tariff-unlimited-text">Безлимиты на</div>
                                 <div class="tariff-unlimited-logos-container">
-                                    <img src="/images/vk-logo.svg" alt="VK" class="tariff-unlimited-logo">
-                                    <img src="/images/yt-logo.svg" alt="YouTube" class="tariff-unlimited-logo">
-                                    <img src="/images/tg-logo.svg" alt="Telegram" class="tariff-unlimited-logo">
-                                    <img src="/images/proverka-logo.png" alt="Proverka" class="tariff-unlimited-logo">
-                                    <img src="/images/tiktok-logo.svg" alt="TikTok" class="tariff-unlimited-logo">
+                                    <img
+                                            th:each="unlimited: ${featured1.unlimiteds}"
+                                            th:src="'/images/' + ${unlimited.imgPath}"
+                                            th:alt="unlimited.name"
+                                            class="tariff-unlimited-logo"
+                                    >
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex-row tariff-card tariff-premade-2">
                             <div class="flex-column">
-                                Тарифмин
+                                [[${featured2.name}]]
                                 <div class="flex-bottom flex-left">
-                                    <div class="tariff-price" id="tariff-lite-price"><b>249 ₽</b> <small>за 30 дней</small></div>
-                                    <a href="PLACEHOLDER">
+                                    <div class="tariff-price" id="tariff-lite-price"><b>[[${featured2.totalCost}]] ₽</b> <small>за 30 дней</small></div>
+                                    <a href="/account">
                                         <button class="rounded-btn red-btn">Подробнее</button>
                                     </a>
                                 </div>
                             </div>
                             <div class="flex-right tariff-premade-info">
-                                <div id="tariff-lite-info">12 <small>ГБ</small> 200 <small>МИН</small></div>
+                                <div id="tariff-lite-info">[[${featured2.internetBandwidth}]] <small>ГБ</small> [[${featured2.phoneBandwidth}]] <small>МИН</small></div>
                                 <div class="tariff-unlimited-text">Безлимиты на</div>
                                 <div class="tariff-unlimited-logos-container">
-                                    <img src="/images/vk-logo.svg" alt="VK" class="tariff-unlimited-logo">
-                                    <img src="/images/tg-logo.svg" alt="Telegram" class="tariff-unlimited-logo">
-                                    <img src="/images/whatsapp-logo.svg" alt="Whatsapp" class="tariff-unlimited-logo">
+                                    <img
+                                            th:each="unlimited: ${featured2.unlimiteds}"
+                                            th:src="'/images/' + ${unlimited.imgPath}"
+                                            th:alt="unlimited.name"
+                                            class="tariff-unlimited-logo"
+                                    >
                                 </div>
                             </div>
                         </div>

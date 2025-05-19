@@ -22,8 +22,8 @@
 }
 
 .tariff-card:hover {
-    transform: scale(1.01, 1.01);
-    transition-duration: 100ms;
+    transform: scale(1.02, 1.02);
+    transition-duration: 200ms;
 }
 
 .tariff-price {

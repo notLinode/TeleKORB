@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <link href="/styles/style.css" type="text/css" rel="stylesheet">
+    <link href="/styles/index.css" type="text/css" rel="stylesheet">
 
     <title>Личный кабинет</title>
 </head>
@@ -19,6 +20,191 @@
 
         <div class="column-center">
             <div class="page-heading">Личный кабинет</div>
+
+            <div th:if="${userDto.tariff}">
+                <div th:unless="${userDto.tariff.isPersonal}" class="page-heading2">Активный тариф</div>
+                <div th:unless="${userDto.tariff.isPersonal}" class="tariffs-showcase" style="gap: 10px; align-items: center;">
+                    <div class="flex-row tariff-card tariff-max" style="min-height: 160px;">
+                        <div class="flex-column">
+                            [[${userDto.tariff.name}]]
+                            <div class="flex-bottom flex-left">
+                                <div class="tariff-price"><b>[[${userDto.tariff.totalCost}]] ₽</b> <small>за 30 дней</small></div>
+                                <form th:action="@{/account/remove-tariff}" method="post">
+                                    <button type="submit" class="rounded-btn red-btn">Деактивировать</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="flex-right tariff-premade-info">
+                            <div>[[${userDto.tariff.internetBandwidth}]] <small>ГБ</small> [[${userDto.tariff.phoneBandwidth}]] <small>МИН</small></div>
+                            <div class="tariff-unlimited-text">Безлимиты на</div>
+                            <div class="tariff-unlimited-logos-container">
+                                <img
+                                        th:each="unlimited: ${userDto.tariff.unlimiteds}"
+                                        th:src="'/images/' + ${unlimited.imgPath}"
+                                        th:alt="unlimited.name"
+                                        class="tariff-unlimited-logo"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div th:if="${userDto.tariff.isPersonal}" class="page-heading2">Настройка тарифа</div>
+                <div th:if="${userDto.tariff.isPersonal}" class="border-light" style="margin: 0 20%; align-self: center;">
+                    <div class="flex-row">
+                        <form th:action="@{/account/update-personal-tariff}" th:object="${userDto.tariff}" method="post" class="flex-column" style="gap: 15px;">
+                            <div>
+                                <label for="internetBandwidth" class="text-label">Интернет трафик</label>
+                                <div class="flex-row">
+                                    <input
+                                            type="range"
+                                            name="internetBandwidth"
+                                            id="internetBandwidth"
+                                            min="0"
+                                            max="50"
+                                            th:value="${userDto.tariff.internetBandwidth}"
+                                            class="slider-input"
+                                    >
+                                    <span id="internetBandwidthValue" style="margin: 0 5px; font-weight: 700;">0</span>ГБ
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="phoneBandwidth" class="text-label">Мобильный трафик</label>
+                                <div class="flex-row">
+                                    <input
+                                            type="range"
+                                            name="phoneBandwidth"
+                                            id="phoneBandwidth"
+                                            min="0"
+                                            max="800"
+                                            step="10"
+                                            th:value="${userDto.tariff.phoneBandwidth}"
+                                            class="slider-input"
+                                    >
+                                    <span id="phoneBandwidthValue" style="margin: 0 5px; font-weight: 700;">0</span>МИН
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="text-label">Безлимиты</span>
+                                <div>
+                                    <script>
+                                        let unlimitedsPrice = 0;
+
+                                        function updateUnlimitedsPrice(checkbox, price) {
+                                            unlimitedsPrice += checkbox.checked ? price : -price;
+                                        }
+                                    </script>
+                                    <span th:each="unlimited : ${allUnlimiteds}" style="float: left; display: flex; flex-direction: column; align-items: center; margin-right: 10px;">
+                                        <div style="width: fit-content;">
+                                            <input
+                                                    type="checkbox"
+                                                    name="unlimiteds"
+                                                    th:value="${unlimited.id}"
+                                                    th:id="${unlimited.name}"
+                                                    th:checked="${userDto.tariff.unlimiteds.contains(unlimited)}"
+                                                    th:oninput="updateUnlimitedsPrice(this, [[${unlimited.cost}]]); updatePersonalPrice();"
+                                            >
+                                            <label th:for="${unlimited.name}" th:text="${unlimited.name}"></label>
+                                            <script>
+                                                unlimitedsPrice += document.querySelector("#[[${unlimited.name}]]").checked ? [[${unlimited.cost}]] : 0;
+                                            </script>
+                                        </div>
+                                        <span th:text="'+' + ${unlimited.cost.intValue()} + ' ₽'" style="text-align: center;"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="tariff-price"><b><span id="personalPrice">[[${userDto.tariff.totalCost}]]</span> ₽</b> <small>за 30 дней</small></div>
+
+                                <script>
+                                    function updatePersonalPrice() {
+                                        const price = document.querySelector("#personalPrice");
+                                        const gigabytes = Number(document.querySelector("#internetBandwidthValue").innerHTML);
+                                        const minutes = Number(document.querySelector("#phoneBandwidthValue").innerHTML);
+                                        const perGigabyte = [[${bandwidthCost.perGigabyte}]];
+                                        const perMinute0To200 = [[${bandwidthCost.perMinute0To200}]];
+                                        const perMinuteAbove200 = [[${bandwidthCost.perMinuteAbove200}]];
+
+                                        let total = gigabytes * perGigabyte + [[${userDto.tariff.baseCost}]] + unlimitedsPrice;
+                                        if (minutes > 200) {
+                                            total += 200 * perMinute0To200 + (minutes - 200) * perMinuteAbove200;
+                                        }
+                                        else {
+                                            total += minutes * perMinute0To200;
+                                        }
+
+                                        price.innerHTML = Math.floor(total).toString();
+                                    }
+
+                                    function hookSliderWithValue(sliderId) {
+                                        const slider = document.querySelector(sliderId);
+                                        const value = document.querySelector(sliderId + "Value");
+                                        value.innerHTML = slider.value;
+
+                                        slider.oninput = function() {
+                                            value.innerHTML = slider.value;
+                                            updatePersonalPrice();
+                                        }
+                                    }
+
+                                    hookSliderWithValue("#internetBandwidth")
+                                    hookSliderWithValue("#phoneBandwidth")
+                                </script>
+
+                                <button type="submit" class="rounded-btn red-btn">Сохранить</button>
+                            </div>
+                        </form>
+                        <form th:action="@{/account/remove-tariff}" method="post" class="flex-bottom flex-right">
+                            <button type="submit" class="rounded-btn red-btn">Деактивировать</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="page-heading2">Тарифы</div>
+            <div class="tariffs-showcase" style="gap: 10px; align-items: center;">
+                <div class="flex-row tariff-card tariff-personal" style="height: 160px; width: 60%; padding: 20px; margin-right: 10px;">
+                    <div class="flex-column">
+                        <span th:text="${personal.name}" style="font-size: 36px"></span>
+                        <div class="flex-bottom flex-left">
+                            <div class="tariff-price"><b>[[${personal.totalCost}]] ₽</b> <small>за 30 дней</small></div>
+                            <form th:action="@{/account/set-tariff}" method="post">
+                                <button type="submit" class="rounded-btn white-btn">Активировать</button>
+                                <input type="text" name="tariffId" th:value="${personal.id}" class="hidden-input">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div th:each="tariff : ${tariffs}" class="flex-row tariff-card tariff-max" style="min-height: 160px;">
+                    <div class="flex-column">
+                        [[${tariff.name}]]
+                        <div class="flex-bottom flex-left">
+                            <div class="tariff-price"><b>[[${tariff.totalCost}]] ₽</b> <small>за 30 дней</small></div>
+                            <form th:action="@{/account/set-tariff}" method="post">
+                                <button type="submit" class="rounded-btn red-btn">Активировать</button>
+                                <input type="text" name="tariffId" th:value="${tariff.id}" class="hidden-input">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="flex-right tariff-premade-info">
+                        <div>[[${tariff.internetBandwidth}]] <small>ГБ</small> [[${tariff.phoneBandwidth}]] <small>МИН</small></div>
+                        <div class="tariff-unlimited-text">Безлимиты на</div>
+                        <div class="tariff-unlimited-logos-container">
+                            <img
+                                    th:each="unlimited: ${tariff.unlimiteds}"
+                                    th:src="'/images/' + ${unlimited.imgPath}"
+                                    th:alt="unlimited.name"
+                                    class="tariff-unlimited-logo"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="page-heading2">Пользователь</div>
             <div class="border-light" style="margin: 0 20%;">
@@ -42,13 +228,20 @@
                     <div class="text-label">Дата регистрации в TeleKORB</div>
                     <div th:text="${userDto.createdAt.toLocaleString()}"></div>
                 </div>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="rounded-btn red-btn big-btn" style="text-align: center;">
+                        Выйти
+                    </button>
+                </form>
             </div>
 
-            <form th:action="@{/logout}" method="post">
-                <button type="submit" class="rounded-btn red-btn big-btn">
-                    Выйти
-                </button>
-            </form>
+
+
+            <footer class="flex-row">
+                <div class="flex-right">
+                    <b>25+</b> © 2025 ООО «KORB7»
+                </div>
+            </footer>
         </div>
 
         <div class="column-edge"></div>

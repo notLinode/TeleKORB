@@ -11,6 +11,10 @@ public interface UserService {
 
     Optional<UserEntity> findUserByUsername(String username);
 
+    void changeTariff(String username, Long tariffId) throws Exception;
+
+    void removeTariff(String username) throws Exception;
+
     UserDto mapEntityToDto(UserEntity entity);
 
 }
