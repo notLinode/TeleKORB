@@ -32,7 +32,7 @@ public class Tariff {
 
     private double baseCost;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Unlimited> unlimiteds;
 
     @Builder.Default
