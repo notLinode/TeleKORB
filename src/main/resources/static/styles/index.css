@@ -50,7 +50,7 @@
 }
 
 .tariff-personal-phone {
-    clip-path: rect(0 100% 281px 0);
+    -webkit-clip-path: inset(0 0 225px 0);
 }
 
 .tariffs-premade {
