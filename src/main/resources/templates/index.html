@@ -5,8 +5,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
         
-        <link href="/styles/style.css" type="text/css" rel="stylesheet">
-        <link href="/styles/index.css" type="text/css" rel="stylesheet">
+        <link th:href="@{/styles/style.css}" type="text/css" rel="stylesheet">
+        <link th:href="@{/styles/index.css}" type="text/css" rel="stylesheet">
 
         <title>TeleKORB</title>
     </head>
@@ -29,13 +29,13 @@
                                     <b>[[${personalTariff.totalCost}]] ₽</b>
                                     <small> за 30 дней</small>
                                 </div>
-                                <a href="/account">
+                                <a th:href="@{/account}">
                                     <button class="rounded-btn white-btn big-btn">Создать</button>
                                 </a>
                             </div>
                         </div>
                         <div class="flex-right tariff-personal-phone-container">
-                            <img src="/images/phone.png" class="tariff-personal-phone">
+                            <img th:src="@{/images/phone.png}" class="tariff-personal-phone">
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                                 [[${featured1.name}]]
                                 <div class="flex-bottom flex-left">
                                     <div class="tariff-price" id="tariff-max-price"><b>[[${featured1.totalCost}]] ₽</b> <small>за 30 дней</small></div>
-                                    <a href="/account">
+                                    <a th:href="@{/account}">
                                         <button class="rounded-btn red-btn">Подробнее</button>
                                     </a>
                                 </div>
@@ -56,7 +56,7 @@
                                 <div class="tariff-unlimited-logos-container">
                                     <img
                                             th:each="unlimited: ${featured1.unlimiteds}"
-                                            th:src="'/images/' + ${unlimited.imgPath}"
+                                            th:src="@{'/images/' + ${unlimited.imgPath}}"
                                             th:alt="unlimited.name"
                                             class="tariff-unlimited-logo"
                                     >
@@ -69,7 +69,7 @@
                                 [[${featured2.name}]]
                                 <div class="flex-bottom flex-left">
                                     <div class="tariff-price" id="tariff-lite-price"><b>[[${featured2.totalCost}]] ₽</b> <small>за 30 дней</small></div>
-                                    <a href="/account">
+                                    <a th:href="@{/account}">
                                         <button class="rounded-btn red-btn">Подробнее</button>
                                     </a>
                                 </div>
@@ -80,7 +80,7 @@
                                 <div class="tariff-unlimited-logos-container">
                                     <img
                                             th:each="unlimited: ${featured2.unlimiteds}"
-                                            th:src="'/images/' + ${unlimited.imgPath}"
+                                            th:src="@{'/images/' + ${unlimited.imgPath}}"
                                             th:alt="unlimited.name"
                                             class="tariff-unlimited-logo"
                                     >

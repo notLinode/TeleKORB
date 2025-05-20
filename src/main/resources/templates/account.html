@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-    <link href="/styles/style.css" type="text/css" rel="stylesheet">
-    <link href="/styles/index.css" type="text/css" rel="stylesheet">
+    <link th:href="@{/styles/style.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/styles/index.css}" type="text/css" rel="stylesheet">
 
     <title>Личный кабинет</title>
 </head>
@@ -40,7 +40,7 @@
                             <div class="tariff-unlimited-logos-container">
                                 <img
                                         th:each="unlimited: ${userDto.tariff.unlimiteds}"
-                                        th:src="'/images/' + ${unlimited.imgPath}"
+                                        th:src="@{'/images/' + ${unlimited.imgPath}}"
                                         th:alt="unlimited.name"
                                         class="tariff-unlimited-logo"
                                 >
@@ -197,7 +197,7 @@
                         <div class="tariff-unlimited-logos-container">
                             <img
                                     th:each="unlimited: ${tariff.unlimiteds}"
-                                    th:src="'/images/' + ${unlimited.imgPath}"
+                                    th:src="@{'/images/' + ${unlimited.imgPath}}"
                                     th:alt="unlimited.name"
                                     class="tariff-unlimited-logo"
                             >

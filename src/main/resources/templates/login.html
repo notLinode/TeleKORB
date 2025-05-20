@@ -5,7 +5,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
         
-        <link href="/styles/style.css" type="text/css" rel="stylesheet">
+        <link th:href="@{/styles/style.css}" type="text/css" rel="stylesheet">
 
         <title>Войти</title>
     </head>
@@ -48,7 +48,7 @@
                                 🚫 Данный номер не является номером TeleKORB
                             </div>
                             <div style="margin-top: 0.5rem;">
-                                🧾 Для того, чтобы войти, необходимо <a href="/buy-sim">иметь сим-карту TeleKORB</a>
+                                🧾 Для того, чтобы войти, необходимо <a th:href="@{/buy-sim}">иметь сим-карту TeleKORB</a>
                             </div>
 
                             <input type="password" id="password" name="password" value="" style="visibility: hidden; position: absolute">
