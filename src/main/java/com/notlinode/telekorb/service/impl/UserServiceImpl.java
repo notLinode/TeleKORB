@@ -4,6 +4,7 @@ import com.notlinode.telekorb.dto.UserDto;
 import com.notlinode.telekorb.model.UserEntity;
 import com.notlinode.telekorb.repository.TariffRepository;
 import com.notlinode.telekorb.repository.UserRepository;
+import com.notlinode.telekorb.service.PhoneNumberService;
 import com.notlinode.telekorb.service.TariffService;
 import com.notlinode.telekorb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +27,30 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private TariffRepository tariffRepo;
 
+    @Autowired
+    private PhoneNumberService phoneService;
+
     @Override
     public UserEntity createUser(UserDto userDto) {
         String phoneNum;
 
         if (Objects.equals(userDto.getPhoneNum(), "0")) {
-            Random rng = new Random();
-            do {
-                phoneNum = String.format("79%09d", rng.nextInt(1_000_000_000));
-            } while (this.findUserByUsername(phoneNum).isPresent());
+            var phoneOptional = phoneService.getNextNotNiceNumber();
+            if (phoneOptional.isPresent()) {
+                phoneNum = phoneOptional.get().getPhone();
+            }
+            else {
+                Random rng = new Random();
+                do {
+                    phoneNum = String.format("79%09d", rng.nextInt(1_000_000_000));
+                } while (this.findUserByUsername(phoneNum).isPresent());
+            }
         }
         else {
             phoneNum = userDto.getPhoneNum();
         }
+
+        phoneService.deleteByPhone(phoneNum);
 
         UserEntity user = UserEntity.builder()
                 .createdAt(new Date())

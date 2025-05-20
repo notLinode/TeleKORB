@@ -2,6 +2,7 @@ package com.notlinode.telekorb.controller;
 
 import com.notlinode.telekorb.dto.UserDto;
 import com.notlinode.telekorb.model.UserEntity;
+import com.notlinode.telekorb.service.PhoneNumberService;
 import com.notlinode.telekorb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PhoneNumberService phoneService;
+
     @GetMapping("/login")
     public String showLogin(Model model) {
         UserDto userDto = new UserDto();
@@ -27,6 +31,8 @@ public class LoginController {
     public String showRegister(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute(userDto);
+
+        model.addAttribute("niceNumbers", phoneService.getAllNiceNumbers());
 
         return "buy-sim";
     }

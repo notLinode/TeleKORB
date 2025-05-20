@@ -52,13 +52,22 @@
 
                                 <div class="border-light">
                                     <h2>Красивый номер</h2>
+                                    <script>
+                                        function changeOrderDetails(orderInfo1, orderCost1, orderTotal) {
+                                            document.querySelector("#orderInfo1").innerHTML = orderInfo1;
+                                            document.querySelector("#orderCost1").innerHTML = orderCost1;
+                                            document.querySelector("#orderTotal").innerHTML = orderTotal;
+                                        }
+                                    </script>
                                     <div>
-                                        <input type="radio" name="phoneNum" id="phoneNum0" value="0" checked>
+                                        <input type="radio" name="phoneNum" id="phoneNum0" value="0" checked onclick="changeOrderDetails('Случайный номер', 150, 150)">
                                         <label for="phoneNum0">Случайный номер</label>
+                                        <small style="margin-left: 5px;">+150 ₽</small>
                                     </div>
-                                    <div>
-                                        <input type="radio" name="phoneNum" id="phoneNum1" value="79123456789">
-                                        <label for="phoneNum1">+7 (912) 345 67-89</label>
+                                    <div th:each="number : ${niceNumbers}">
+                                        <input type="radio" name="phoneNum" th:id="${number.phone}" th:value="${number.phone}" th:onclick="changeOrderDetails('Красивый номер', [[${number.cost}]], [[${number.cost}]]);">
+                                        <label th:for="${number.phone}" th:text="${number.getFormattedPhone()}">+7 (9xx) xxx xx-xx</label>
+                                        <small style="margin-left: 5px;">+<span th:text="${number.cost.intValue()}"></span> ₽</small>
                                     </div>
                                 </div>
 
@@ -74,10 +83,13 @@
                             <div class="flex-column" style="flex: 1;">
                                 <div class="border-light order-summary">
                                     <h2>Заказ</h2>
-                                    Proverka
+                                    <div class="flex-row">
+                                        <div id="orderInfo1">Случайный номер</div>
+                                        <div class="flex-right">+<span id="orderCost1">150</span> ₽</div>
+                                    </div>
                                     <div class="flex-row">
                                         <div><b>Итого</b></div>
-                                        <div class="flex-right"><b>50 ₽</b></div>
+                                        <div class="flex-right"><b><span id="orderTotal">150</span> ₽</b></div>
                                     </div>
                                 </div>
                                 

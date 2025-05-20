@@ -1,9 +1,11 @@
 package com.notlinode.telekorb.util;
 
 import com.notlinode.telekorb.model.BandwidthCost;
+import com.notlinode.telekorb.model.PhoneNumber;
 import com.notlinode.telekorb.model.Tariff;
 import com.notlinode.telekorb.model.Unlimited;
 import com.notlinode.telekorb.repository.BandwidthCostRepository;
+import com.notlinode.telekorb.repository.PhoneNumberRepository;
 import com.notlinode.telekorb.repository.TariffRepository;
 import com.notlinode.telekorb.repository.UnlimitedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +21,19 @@ public class DataLoader implements ApplicationRunner {
     private final TariffRepository tariffRepo;
     private final BandwidthCostRepository costsRepo;
     private final UnlimitedRepository unlimitedRepo;
+    private final PhoneNumberRepository phoneRepo;
 
     @Autowired
     public DataLoader(
             TariffRepository tariffRepo,
             BandwidthCostRepository costsRepo,
-            UnlimitedRepository unlimitedRepo
+            UnlimitedRepository unlimitedRepo,
+            PhoneNumberRepository phoneRepo
     ) {
         this.tariffRepo = tariffRepo;
         this.costsRepo = costsRepo;
         this.unlimitedRepo = unlimitedRepo;
+        this.phoneRepo = phoneRepo;
     }
 
     @Override
@@ -106,6 +111,39 @@ public class DataLoader implements ApplicationRunner {
                 .unlimiteds(List.of(unlimitedVk, unlimitedTg, unlimitedWhatsapp))
                 .build();
         tariffRepo.save(tariffmin);
+
+        var phone1 = PhoneNumber.builder()
+                .phone("79123456789")
+                .cost(500.0)
+                .isNice(true)
+                .build();
+        var phone2 = PhoneNumber.builder()
+                .phone("79535303739")
+                .cost(.0)
+                .build();
+        var phone3 = PhoneNumber.builder()
+                .phone("79534016375")
+                .cost(.0)
+                .build();
+        var phone4 = PhoneNumber.builder()
+                .phone("79061950313")
+                .cost(.0)
+                .build();
+        var phone5 = PhoneNumber.builder()
+                .phone("79130219677")
+                .cost(.0)
+                .build();
+        var phone6 = PhoneNumber.builder()
+                .phone("79922223047")
+                .cost(300.0)
+                .isNice(true)
+                .build();
+        var phone7 = PhoneNumber.builder()
+                .phone("79090998877")
+                .cost(999.0)
+                .isNice(true)
+                .build();
+        phoneRepo.saveAll(List.of(phone1, phone2, phone3, phone4, phone5, phone6, phone7));
     }
 
 }
