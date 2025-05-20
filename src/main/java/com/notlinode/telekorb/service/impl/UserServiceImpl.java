@@ -52,8 +52,9 @@ public class UserServiceImpl implements UserService {
 
         phoneService.deleteByPhone(phoneNum);
 
+        var date = userDto.getCreatedAt() == null ? new Date() : userDto.getCreatedAt();
         UserEntity user = UserEntity.builder()
-                .createdAt(new Date())
+                .createdAt(date)
                 .username(phoneNum)
                 .password("{noop}")
                 .name(userDto.getName())
