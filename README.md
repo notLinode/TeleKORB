@@ -14,30 +14,39 @@ TeleKORB это веб приложение по предоставлению у
 
 Для запуска TeleKORB необходимо иметь Java 21 и правильно настроенную переменную
 среды `JAVA_HOME`. Пример установки Java 21 для систем Ubuntu:
-```shell
+```bash
 $ wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
 $ sudo apt install ./jdk-21_linux-x64_bin.deb
 ```
 
 После этого следует скопировать репозиторий на свой диск:
-```shell
+```bash
 $ git clone https://github.com/notLinode/TeleKORB
 ```
 
 Затем вы можете открыть папку с репозиторием:
-```shell
+```bash
 $ cd TeleKORB/
-$ ./mvnw spring-boot:run
 ```
 
 Для того, чтобы запустить сервер, необходимо сделать `mvnw` запускаемой 
 программой:
-```shell
+```bash
 $ chmod u+x mvnw
 ```
 
 Теперь вы можете запустить сервер (по-умолчанию сервер будет доступен по 
 адресу `localhost/telekorb/`):
-```shell
+```bash
 $ ./mvnw spring-boot:run
 ```
+
+## GitHub Actions
+
+![Tests](https://github.com/notLinode/TeleKORB/actions/workflows/test.yml/badge.svg)
+![Build](https://github.com/notLinode/TeleKORB/actions/workflows/build.yml/badge.svg)
+
+| Workflow    | Назначение                                                                                                            | Условия запуска                |
+| ----------- |-----------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `test.yml`  | Автоматически запускает тесты с помощью `mvn test`, чтобы убедиться, что изменения не сломали функциональность.       | При каждом push в ветку `main` |
+| `build.yml` | Выполняет сборку приложения Spring Boot с помощью `mvn clean install` и загружает полученный `.jar` файл в артефакты. | При каждом push в ветку `main` |
