@@ -31,7 +31,6 @@ public class AccountController {
     public String showAccount(Model model, Authentication auth) {
         Optional<UserEntity> userEntity = userService.findUserByUsername(auth.getName());
         UserDto userDto = userService.mapEntityToDto(userEntity.get());
-        System.out.println(userEntity.get());
         model.addAttribute(userDto);
 
         var tariffs = tariffService.getAllPremade();
@@ -78,7 +77,6 @@ public class AccountController {
         var userTariffId = user.getTariff().getId();
         updated.setId(userTariffId);
         try {
-            System.out.println(updated);
             tariffService.updateTariff(updated);
         }
         catch (Exception ignored) {

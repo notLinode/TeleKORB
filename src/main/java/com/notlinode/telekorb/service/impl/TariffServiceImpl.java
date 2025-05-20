@@ -61,7 +61,6 @@ public class TariffServiceImpl implements TariffService {
         tariff.setPhoneBandwidth(tariffDto.getPhoneBandwidth());
         tariff.setUnlimiteds(tariffDto.getUnlimiteds());
 
-        System.out.println(tariff);
         tariffRepo.save(tariff);
     }
 
