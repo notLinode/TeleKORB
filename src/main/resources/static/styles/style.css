@@ -1,12 +1,12 @@
 :root {
-    --primary-light: oklch(61.22% 0.2313 22.5);
-    --primary-dark: oklch(55.91% 0.2248 23.97);
-    --secondary-lighter: oklch(85% 0.034 261);
-    --secondary-light: oklch(45% 0.034 261);
-    --secondary-dark: oklch(30.5% 0.037 280);
-    --secondary-darker: oklch(20% 0.037 280);
-    --bg: oklch(95.7% 0.006 223);
-    --bg-dark: oklch(90% 0.006 223);
+    --primary-light: #ef233c;
+    --primary-dark: #d90429;
+    --secondary-lighter: #c1cfe5;
+    --secondary-light: #4b5669;
+    --secondary-dark: #2b2d42;
+    --secondary-darker: #131426;
+    --bg: #edf2f4;
+    --bg-dark: #dadfe1;
     --fonts-logo: 'Rubik', sans-serif;
     --fonts-text: 'Nunito Sans', sans-serif;
 }
